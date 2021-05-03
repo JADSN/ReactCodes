@@ -45,7 +45,7 @@ def update_one(id: int, req_body: UpdateTaskIem, db: Session = Depends(get_db)):
 
     db.commit()
 
-    return id
+    return item.first()
 
 
 def delete_one(id: int, db: Session = Depends(get_db)):
@@ -58,4 +58,4 @@ def delete_one(id: int, db: Session = Depends(get_db)):
     item.delete(synchronize_session=False)
     db.commit()
 
-    return id
+    return item.first()
